@@ -125,20 +125,20 @@ export default {
             },
             data: JSON.stringify(POST_BODY)
           }
-        )
-          .then(response => response.json())
-          .then(json => {
-            this.options = json.hits.hits.map(product => {
-              // eslint-disable-next-line no-console
-              console.log(product._source.productfields.product_name["en-us"]);
-              return {
-                id: product._id,
-                name: product._source.productfields.product_name["en-us"],
-                image: product._source.images && product._source.images[0]
-              };
-            });
-            this.isLoading = false;
+        ).then(response => response.json());
+
+        fetching.then(json => {
+          this.options = json.hits.hits.map(product => {
+            // eslint-disable-next-line no-console
+            console.log(product._source.productfields.product_name["en-us"]);
+            return {
+              id: product._id,
+              name: product._source.productfields.product_name["en-us"],
+              image: product._source.images && product._source.images[0]
+            };
           });
+          this.isLoading = false;
+        });
         // eslint-disable-next-line no-console
         console.log(fetching);
       } catch (err) {
