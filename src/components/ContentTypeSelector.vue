@@ -5,6 +5,7 @@
       placeholder="Select products"
       open-direction="bottom"
       :options="options"
+      :option-height="104"
       :multiple="true"
       :loading="isLoading"
       label="name"
