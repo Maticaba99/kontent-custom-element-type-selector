@@ -122,7 +122,7 @@ export default {
           "Content-Type": "application/json;charset=utf-8",
           Authorization: `Basic ZWxhc3RpYzpXNFRDNTVFTUdRUmx5a0F2ZVZaOVVnTjM`
         },
-        data: JSON.stringify(POST_BODY)
+        data: POST_BODY
       });
       // eslint-disable-next-line no-console
       console.log(postsAx);
