@@ -70,8 +70,8 @@ export default {
         .then(response => response.json())
         .then(json => {
           /* eslint-disable no-console */
-          console.log(json, "that");
-          this.options = json.types.map(type => type.system);
+          console.log(json, "that", this.element.config.filter);
+          this.options = json.items.map(type => type.system);
           this.isLoading = false;
         });
     },
