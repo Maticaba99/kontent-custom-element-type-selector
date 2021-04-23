@@ -13,6 +13,10 @@
       @input="onSelect"
     >
       <template slot="singleLabel" slot-scope="{ option }">
+        <div class="title">{{ option.name }}</div>
+        <div class="title">{{ option.id }}</div>
+        <!-- eslint-disable-next-line prettier/prettier -->
+        <img class="preview" src={{option.image}} />
         <strong>{{ option.sys.name }}</strong>
       </template>
     </multiselect>
@@ -55,21 +59,23 @@ export default {
     },
     fetchTypes() {
       fetch(
-        `https://deliver.kontent.ai/${
-          this.element.config.projectId
-        }/items?depth=0&elements=null${
-          this.element.config.filter ? "&" + this.element.config.filter : ""
-        }`,
+        `https://6d1a49bf49e44b74a37bcaa0edf1d9e7.eastus2.azure.elastic-cloud.com:9243/products/_search`,
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${this.element.config.secureAccess}`
+            Authorization: `Basic ZWxhc3RpYzpXNFRDNTVFTUdRUmx5a0F2ZVZaOVVnTjM`
           }
         }
       )
         .then(response => response.json())
         .then(json => {
-          this.options = json.items.map(type => type.system);
+          this.options = json.hits.hits.map(product => {
+            return {
+              id: product._id,
+              name: product._source.productfields.product_name["en-us"],
+              image: product._source.productcard.featureimage
+            };
+          });
           this.isLoading = false;
         });
     },
