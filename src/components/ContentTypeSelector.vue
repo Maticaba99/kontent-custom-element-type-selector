@@ -16,21 +16,18 @@
       <template slot="singleLabel"
         ><img
           class="option__image"
-          :src="options.img"
+          :src="options.image"
           alt="No Man’s Sky"
         /><span /><span class="option__desc"
           ><span class="option__title">{{ options.title }}</span></span
         ></template
       >
       <template slot="option"
-        ><img class="option__image" :src="options.img" alt="No Man’s Sky" />
+        ><img class="option__image" :src="options.image" alt="No Man’s Sky" />
         <div class="option__desc">
           <span class="option__title">{{ options.title }}</span
           ><span class="option__small">{{ options.desc }}</span>
         </div>
-        <script>
-          console.log("ndea");
-        </script>
       </template>
     </multiselect>
     <pre class="language-json"><code>{{ value  }}</code></pre>
@@ -84,12 +81,6 @@ export default {
         .then(response => response.json())
         .then(json => {
           this.options = json.hits.hits.map(product => {
-            // eslint-disable-next-line no-console
-            console.log(
-              product._source.productfields &&
-                product._source.productfields.image_closeup &&
-                product._source.productfields.image_closeup.salsifysource_url
-            );
             return {
               id: product._id,
               name: product._source.productfields.product_name["en-us"],
