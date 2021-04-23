@@ -32,7 +32,7 @@
           :alt="this.options.name"
         />
         <div class="option__desc">
-          {{ console.log(options) }}
+          {{ console.log(this.options) }}
           <span class="option__title">{{ this.options.name }}</span
           ><span class="option__small">{{ this.options.id }}</span>
         </div>
