@@ -120,7 +120,7 @@ export default {
             Authorization: "Basic ZWxhc3RpYzpXNFRDNTVFTUdRUmx5a0F2ZVZaOVVnTjM",
             "Content-Type": "application/json"
           },
-          data: JSON.stringify(POST_BODY)
+          body: JSON.stringify(POST_BODY)
         }
       )
         .then(response => response.json())
