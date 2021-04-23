@@ -14,10 +14,10 @@
     >
       <template slot="singleLabel" slot-scope="{ option }">
         <div class="title">{{ option.name }}</div>
-        <div class="title">{{ option.id }}</div>
+        <div class="sku">{{ option.id }}</div>
         <!-- eslint-disable-next-line prettier/prettier -->
         <img class="preview" src={{option.image}} />
-        <strong>{{ option.sys.name }}</strong>
+        <!-- <strong>{{ option.sys.name }}</strong> -->
       </template>
     </multiselect>
   </div>
