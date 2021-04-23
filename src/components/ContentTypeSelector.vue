@@ -17,6 +17,10 @@
       :disabled="element.disabled"
       @input="onSelect"
       @search-change="fetchTypes"
+      :clear-on-select="false"
+      :options-limit="300"
+      :limit="3"
+      :limit-text="limitText"
     >
       <template slot="singleLabel">
         <img class="option__image" :src="option.image" :alt="option.name" />
@@ -80,7 +84,7 @@ export default {
           },
           data: JSON.stringify({
             from: 0,
-            size: 100,
+            size: 10,
             query: {
               bool: {
                 must: [
