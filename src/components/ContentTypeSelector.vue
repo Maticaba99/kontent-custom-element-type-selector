@@ -104,7 +104,7 @@ export default {
               },
               {
                 exists: {
-                  field: "productcard"
+                  field: "productcard.featureimage"
                 }
               }
             ]
