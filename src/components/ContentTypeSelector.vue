@@ -56,7 +56,7 @@ export default {
     fetchTypes() {
       fetch(
         `https://deliver.kontent.ai/${
-          this.context.projectId
+          this.element.config.projectId
         }/items?depth=0&elements=null${
           this.element.config.filter ? "&" + this.element.config.filter : ""
         }`,
