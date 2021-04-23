@@ -114,16 +114,17 @@ export default {
         }
       };
       this.isLoading = true;
-      const postsAx = await axios({
-        method: "POST",
-        url:
+      const postsAx = await axios
+        .post(
           "https://6d1a49bf49e44b74a37bcaa0edf1d9e7.eastus2.azure.elastic-cloud.com:9243/products/_search",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-          Authorization: `Basic ZWxhc3RpYzpXNFRDNTVFTUdRUmx5a0F2ZVZaOVVnTjM`
-        },
-        data: POST_BODY
-      })
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Basic ZWxhc3RpYzpXNFRDNTVFTUdRUmx5a0F2ZVZaOVVnTjM`
+            },
+            data: POST_BODY
+          }
+        )
         .then(res => {
           // eslint-disable-next-line no-console
           console.log(res);
