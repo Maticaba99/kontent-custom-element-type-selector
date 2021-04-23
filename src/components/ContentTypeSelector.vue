@@ -17,9 +17,8 @@
         <img
           style="width:100%;"
           class="option__image"
-          :src="options.image"
+          :src="this.options.image"
           :alt="options.name"
-        />
         />
         <span class="option__desc">
           <span class="option__title">{{ options.name }}</span></span
