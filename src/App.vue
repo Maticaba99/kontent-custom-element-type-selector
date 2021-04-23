@@ -74,7 +74,7 @@ export default {
     },
     initialize: function(element, context) {
       /* eslint-disable no-console */
-      console.log(element, context);
+      console.log(element.config);
       this.element = element;
       this.context = context;
       this.value = this.element.value ? JSON.parse(this.element.value) : null;
