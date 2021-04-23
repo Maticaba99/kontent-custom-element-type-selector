@@ -114,19 +114,18 @@ export default {
         }
       };
       this.isLoading = true;
-
-      const postAx = await axios.post(
-        "https://6d1a49bf49e44b74a37bcaa0edf1d9e7.eastus2.azure.elastic-cloud.com:9243/products/_search",
-        {
-          headers: {
-            "Content-Type": "application/json;charset=utf-8",
-            Authorization: `Basic ZWxhc3RpYzpXNFRDNTVFTUdRUmx5a0F2ZVZaOVVnTjM`
-          },
-          data: JSON.stringify(POST_BODY)
-        }
-      );
+      const postsAx = await axios({
+        method: "POST",
+        url:
+          "https://6d1a49bf49e44b74a37bcaa0edf1d9e7.eastus2.azure.elastic-cloud.com:9243/products/_search",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+          Authorization: `Basic ZWxhc3RpYzpXNFRDNTVFTUdRUmx5a0F2ZVZaOVVnTjM`
+        },
+        data: JSON.stringify(POST_BODY)
+      });
       // eslint-disable-next-line no-console
-      console.log(postAx);
+      console.log(postsAx);
       await fetch(
         `https://6d1a49bf49e44b74a37bcaa0edf1d9e7.eastus2.azure.elastic-cloud.com:9243/products/_search`,
         {
