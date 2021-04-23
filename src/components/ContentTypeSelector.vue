@@ -43,7 +43,7 @@
         />
         <div class="option__desc">
           <span class="option__title">{{ props.option.name }}</span
-          ><span class="option__small">{{ propsoption.id }}</span>
+          ><span class="option__small">{{ props.option.id }}</span>
         </div>
       </template>
     </multiselect>
