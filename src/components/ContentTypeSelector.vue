@@ -123,7 +123,13 @@ export default {
           Authorization: `Basic ZWxhc3RpYzpXNFRDNTVFTUdRUmx5a0F2ZVZaOVVnTjM`
         },
         data: POST_BODY
-      });
+      })
+        .then(res => {
+          // eslint-disable-next-line no-console
+          console.log(res);
+        })
+        // eslint-disable-next-line no-console
+        .catch(err => console.log(err));
       // eslint-disable-next-line no-console
       console.log(postsAx);
       await fetch(
