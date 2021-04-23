@@ -78,7 +78,11 @@ export default {
         .then(json => {
           this.options = json.hits.hits.map(product => {
             // eslint-disable-next-line no-console
-            console.log(product);
+            console.log(
+              product._source.productfields &&
+                product._source.productfields.image_closeup &&
+                product._source.productfields.image_closeup.salsifysource_url
+            );
             return {
               id: product._id,
               name: product._source.productfields.product_name["en-us"],
