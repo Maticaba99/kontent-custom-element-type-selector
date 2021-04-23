@@ -90,6 +90,8 @@ export default {
                 product._source.productfields.image_closeup.salsifysource_url
             };
           });
+          // eslint-disable-next-line no-console
+          console.log(this.options);
           this.isLoading = false;
         });
     },
