@@ -16,17 +16,17 @@
       <template slot="singleLabel"
         ><img
           class="option__image"
-          :src="option.img"
+          :src="options.img"
           alt="No Man’s Sky"
         /><span /><span class="option__desc"
-          ><span class="option__title">{{ option.title }}</span></span
+          ><span class="option__title">{{ options.title }}</span></span
         ></template
       >
       <template slot="option"
-        ><img class="option__image" :src="option.img" alt="No Man’s Sky" />
+        ><img class="option__image" :src="options.img" alt="No Man’s Sky" />
         <div class="option__desc">
-          <span class="option__title">{{ option.title }}</span
-          ><span class="option__small">{{ option.desc }}</span>
+          <span class="option__title">{{ options.title }}</span
+          ><span class="option__small">{{ options.desc }}</span>
         </div>
         <script>
           console.log("ndea");
