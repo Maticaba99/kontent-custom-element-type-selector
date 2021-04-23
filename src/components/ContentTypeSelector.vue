@@ -2,7 +2,6 @@
   <div>
     <multiselect
       v-model="selectedTypes"
-      v-for="option in options"
       :key="option"
       placeholder="Select products"
       open-direction="bottom"
@@ -29,6 +28,7 @@
           <span class="option__title">{{ option.name }}</span></span
         ></template
       >
+
       <template slot="option"
         ><img class="option__image" :src="option.image" :alt="option.name" />
         <div class="option__desc">
