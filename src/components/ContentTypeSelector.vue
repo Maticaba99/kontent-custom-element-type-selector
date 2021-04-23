@@ -20,20 +20,30 @@
       :options-limit="300"
       :limit="3"
       :limit-text="limitText"
+      :custom-label="customLabel"
+      :show-labels="false"
     >
-      <template slot="singleLabel">
-        <img class="option__image" :src="option.image" :alt="option.name" />
+      <template slot="singleLabel" slot-scope="props">
+        <img
+          class="option__image"
+          :src="props.option.image"
+          :alt="props.option.name"
+        />
         />
         <span class="option__desc">
-          <span class="option__title">{{ option.name }}</span></span
+          <span class="option__title">{{ props.option.name }}</span></span
         ></template
       >
 
-      <template slot="option"
-        ><img class="option__image" :src="option.image" :alt="option.name" />
+      <template slot="option" slot-scope="props"
+        ><img
+          class="option__image"
+          :src="props.option.image"
+          :alt="props.option.name"
+        />
         <div class="option__desc">
-          <span class="option__title">{{ option.name }}</span
-          ><span class="option__small">{{ option.id }}</span>
+          <span class="option__title">{{ props.option.name }}</span
+          ><span class="option__small">{{ propsoption.id }}</span>
         </div>
       </template>
     </multiselect>
@@ -136,6 +146,9 @@ export default {
     },
     save: function(value) {
       this.$emit("update:value", value);
+    },
+    customLabel({ name, id }) {
+      return `${name} – ${id}`;
     }
   }
 };
