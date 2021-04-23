@@ -84,9 +84,8 @@ export default {
     limitText(count) {
       return `and ${count} other countries`;
     },
-    async fetchTypes(searchTerm) {
+    async fetchTypes(query) {
       // eslint-disable-next-line no-console
-      console.log(searchTerm);
       const POST_BODY = {
         from: 0,
         size: 100,
@@ -101,7 +100,7 @@ export default {
               },
               {
                 wildcard: {
-                  "productfields.product_name.en-us": searchTerm
+                  "productfields.product_name.en-us": query
                 }
               },
               {
@@ -114,20 +113,19 @@ export default {
         }
       };
       this.isLoading = true;
-      try {
-        const fetching = await fetch(
-          `https://6d1a49bf49e44b74a37bcaa0edf1d9e7.eastus2.azure.elastic-cloud.com:9243/products/_search`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Basic ZWxhc3RpYzpXNFRDNTVFTUdRUmx5a0F2ZVZaOVVnTjM`
-            },
-            data: JSON.stringify(POST_BODY)
-          }
-        ).then(response => response.json());
-
-        fetching.then(json => {
+      const fetching = await fetch(
+        `https://6d1a49bf49e44b74a37bcaa0edf1d9e7.eastus2.azure.elastic-cloud.com:9243/products/_search`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Basic ZWxhc3RpYzpXNFRDNTVFTUdRUmx5a0F2ZVZaOVVnTjM`
+          },
+          data: JSON.stringify(POST_BODY)
+        }
+      )
+        .then(response => response.json())
+        .then(json => {
           this.options = json.hits.hits.map(product => {
             // eslint-disable-next-line no-console
             console.log(product._source.productfields.product_name["en-us"]);
@@ -139,12 +137,8 @@ export default {
           });
           this.isLoading = false;
         });
-        // eslint-disable-next-line no-console
-        console.log(fetching);
-      } catch (err) {
-        // eslint-disable-next-line no-console
-        console.log(err);
-      }
+      // eslint-disable-next-line no-console
+      console.log(fetching);
     },
     onSelect: function() {
       this.save(this.selectedTypes);
