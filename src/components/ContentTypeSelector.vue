@@ -1,40 +1,35 @@
 <template>
   <div>
-    <label class="typo__label">Custom option template</label>
     <multiselect
       v-model="selectedTypes"
-      placeholder="Fav No Man’s Sky path"
-      label="name"
-      track-by="name"
+      v-for="option in options"
+      :key="option"
+      placeholder="Select products"
+      open-direction="bottom"
       :options="options"
       :option-height="104"
       :multiple="true"
       :loading="isLoading"
-      :custom-label="customLabel"
-      :show-labels="false"
+      label="name"
+      track-by="name"
+      :disabled="element.disabled"
+      @input="onSelect"
     >
-      <!--  <template slot="singleLabel" slot-scope="props"
-        ><img
-          class="option__image"
-          :src="props.options.image"
-          alt="No Man’s Sky"
-        /><span /><span class="option__desc"
-          ><span class="option__title">{{ props.options.name }}</span></span
-        ></template
-      > -->
-      <template slot="option" slot-scope="props"
-        ><img
-          class="option__image"
-          :src="props.options.image"
-          alt="No Man’s Sky"
+      <template slot="singleLabel">
+        <img class="option__image" :src="option.image" :alt="option.name" />
         />
+        <span class="option__desc">
+          <span class="option__title">{{ option.name }}</span></span
+        ></template
+      >
+      <template slot="option"
+        ><img class="option__image" :src="option.image" :alt="option.name" />
         <div class="option__desc">
-          <span class="option__title">{{ props.options.name }}</span
-          ><span class="option__small">{{ props.options.desc }}</span>
+          <span class="option__title">{{ option.name }}</span
+          ><span class="option__small">{{ option.id }}</span>
         </div>
       </template>
     </multiselect>
-    <pre class="language-json"><code>{{ value  }}</code></pre>
   </div>
 </template>
 
@@ -85,6 +80,12 @@ export default {
         .then(response => response.json())
         .then(json => {
           this.options = json.hits.hits.map(product => {
+            // eslint-disable-next-line no-console
+            console.log(
+              product._source.productfields &&
+                product._source.productfields.image_closeup &&
+                product._source.productfields.image_closeup.salsifysource_url
+            );
             return {
               id: product._id,
               name: product._source.productfields.product_name["en-us"],
@@ -94,8 +95,6 @@ export default {
                 product._source.productfields.image_closeup.salsifysource_url
             };
           });
-          // eslint-disable-next-line no-console
-          console.log(this.options);
           this.isLoading = false;
         });
     },
@@ -104,9 +103,6 @@ export default {
     },
     save: function(value) {
       this.$emit("update:value", value);
-    },
-    customLabel({ title, desc }) {
-      return `${title} – ${desc}`;
     }
   }
 };
