@@ -13,20 +13,24 @@
       :custom-label="customLabel"
       :show-labels="false"
     >
-      <template slot="singleLabel"
+      <template slot="singleLabel" slot-scope="props"
         ><img
           class="option__image"
-          :src="options.image"
+          :src="props.options.image"
           alt="No Man’s Sky"
         /><span /><span class="option__desc"
-          ><span class="option__title">{{ options.name }}</span></span
+          ><span class="option__title">{{ props.options.name }}</span></span
         ></template
       >
-      <template slot="option"
-        ><img class="option__image" :src="options.image" alt="No Man’s Sky" />
+      <template slot="option" slot-scope="props"
+        ><img
+          class="option__image"
+          :src="props.options.image"
+          alt="No Man’s Sky"
+        />
         <div class="option__desc">
-          <span class="option__title">{{ options.name }}</span
-          ><span class="option__small">{{ options.desc }}</span>
+          <span class="option__title">{{ props.options.name }}</span
+          ><span class="option__small">{{ props.options.desc }}</span>
         </div>
       </template>
     </multiselect>
@@ -100,6 +104,9 @@ export default {
     },
     save: function(value) {
       this.$emit("update:value", value);
+    },
+    customLabel({ title, desc }) {
+      return `${title} – ${desc}`;
     }
   }
 };
