@@ -126,6 +126,10 @@ export default {
       )
         .then(response => response.json())
         .then(json => {
+          // eslint-disable-next-line no-console
+          console.log(this.options);
+          // eslint-disable-next-line no-console
+          console.log(json.hits.hits);
           this.options = json.hits.hits.map(product => {
             // eslint-disable-next-line no-console
             console.log(product._source.productfields.product_name["en-us"]);
@@ -137,8 +141,6 @@ export default {
           });
           this.isLoading = false;
         });
-      // eslint-disable-next-line no-console
-      console.log(fetching);
     },
     onSelect: function() {
       this.save(this.selectedTypes);
