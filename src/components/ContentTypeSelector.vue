@@ -5,6 +5,7 @@
       :key="option"
       placeholder="Select products"
       open-direction="bottom"
+      :hide-selected="true"
       :options="options"
       :option-height="104"
       :multiple="true"
@@ -18,7 +19,6 @@
       @search-change="fetchTypes"
       :clear-on-select="false"
       :options-limit="300"
-      :limit="3"
       :limit-text="limitText"
       :custom-label="customLabel"
       :show-labels="false"
@@ -114,32 +114,37 @@ export default {
         }
       };
       this.isLoading = true;
-      const fetching = await fetch(
-        `https://6d1a49bf49e44b74a37bcaa0edf1d9e7.eastus2.azure.elastic-cloud.com:9243/products/_search`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Basic ZWxhc3RpYzpXNFRDNTVFTUdRUmx5a0F2ZVZaOVVnTjM`
-          },
-          data: JSON.stringify(POST_BODY)
-        }
-      )
-        .then(response => response.json())
-        .then(json => {
-          this.options = json.hits.hits.map(product => {
-            // eslint-disable-next-line no-console
-            console.log(product._source);
-            return {
-              id: product._id,
-              name: product._source.productfields.product_name["en-us"],
-              image: product._source.images && product._source.images[0]
-            };
+      try {
+        const fetching = await fetch(
+          `https://6d1a49bf49e44b74a37bcaa0edf1d9e7.eastus2.azure.elastic-cloud.com:9243/products/_search`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Basic ZWxhc3RpYzpXNFRDNTVFTUdRUmx5a0F2ZVZaOVVnTjM`
+            },
+            data: JSON.stringify(POST_BODY)
+          }
+        )
+          .then(response => response.json())
+          .then(json => {
+            this.options = json.hits.hits.map(product => {
+              // eslint-disable-next-line no-console
+              console.log(product._source.productfields.product_name["en-us"]);
+              return {
+                id: product._id,
+                name: product._source.productfields.product_name["en-us"],
+                image: product._source.images && product._source.images[0]
+              };
+            });
+            this.isLoading = false;
           });
-          this.isLoading = false;
-        });
-      // eslint-disable-next-line no-console
-      console.log(fetching);
+        // eslint-disable-next-line no-console
+        console.log(fetching);
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.log(err);
+      }
     },
     onSelect: function() {
       this.save(this.selectedTypes);
