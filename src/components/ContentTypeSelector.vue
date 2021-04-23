@@ -47,12 +47,6 @@ export default {
     },
     value: {
       type: Object
-    },
-    filter: {
-      type: String
-    },
-    secureAccess: {
-      type: String
     }
   },
   methods: {
@@ -65,7 +59,7 @@ export default {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${this.secureAccess}`
+            Authorization: `Bearer ${this.element.config.secureAccess}`
           }
         }
       )

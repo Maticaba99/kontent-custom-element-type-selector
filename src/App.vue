@@ -42,9 +42,7 @@ export default {
     errorMessage: "",
     element: {},
     context: {},
-    value: null,
-    filter: "",
-    secureAccess: ""
+    value: null
   }),
   created: function() {
     try {
@@ -78,8 +76,6 @@ export default {
       console.log(element.config.secureAccess);
       this.element = element;
       this.context = context;
-      this.secureAccess = element.config.secureAccess;
-      this.filter = element.config.filter;
       this.value = this.element.value ? JSON.parse(this.element.value) : null;
       this.loaded = true;
       this.updateSize();
