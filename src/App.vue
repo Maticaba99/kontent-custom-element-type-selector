@@ -72,8 +72,6 @@ export default {
       this.element.disabled = disableState;
     },
     initialize: function(element, context) {
-      /* eslint-disable no-console */
-      console.log(element.config.secureAccess);
       this.element = element;
       this.context = context;
       this.value = this.element.value ? JSON.parse(this.element.value) : null;
