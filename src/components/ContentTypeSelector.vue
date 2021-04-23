@@ -13,7 +13,7 @@
       :custom-label="customLabel"
       :show-labels="false"
     >
-      <template slot="singleLabel" slot-scope="props"
+      <!--  <template slot="singleLabel" slot-scope="props"
         ><img
           class="option__image"
           :src="props.options.image"
@@ -21,7 +21,7 @@
         /><span /><span class="option__desc"
           ><span class="option__title">{{ props.options.name }}</span></span
         ></template
-      >
+      > -->
       <template slot="option" slot-scope="props"
         ><img
           class="option__image"
