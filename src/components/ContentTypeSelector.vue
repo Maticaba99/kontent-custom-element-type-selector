@@ -13,22 +13,24 @@
       :disabled="element.disabled"
       @input="onSelect"
     >
-      <template slot="singleLabel" slot-scope="props">
+      <template slot="singleLabel">
         <img
+          style="width:100%;"
           class="option__image"
-          :src="props.options.image"
-          :alt="props.options.name"
+          :src="options.image"
+          :alt="options.name"
         />
         />
         <span class="option__desc">
           <span class="option__title">{{ options.name }}</span></span
         ></template
       >
-      <template slot="option" slot-scope="props"
+      <template slot="option"
         ><img
+          style="width:100%;"
           class="option__image"
-          :src="props.options.image"
-          :alt="props.options.name"
+          :src="options.image"
+          :alt="options.name"
         />
         <div class="option__desc">
           <span class="option__title">{{ options.name }}</span
