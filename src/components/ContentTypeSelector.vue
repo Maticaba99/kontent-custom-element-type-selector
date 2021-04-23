@@ -131,7 +131,9 @@ export default {
             return {
               id: product._id,
               name: product._source.productfields.product_name["en-us"],
-              image: product._source.images && product._source.images[0]
+              image:
+                product._source.productcard &&
+                product._source.productcard.featureimage
             };
           });
           this.isLoading = false;
