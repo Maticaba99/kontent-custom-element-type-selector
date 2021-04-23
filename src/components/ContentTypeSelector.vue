@@ -17,23 +17,24 @@
         <img
           style="width:100%;"
           class="option__image"
-          :src="options.image"
-          :alt="options.name"
+          :src="this.options.image"
+          :alt="this.options.name"
         />
         <span class="option__desc">
-          <span class="option__title">{{ options.name }}</span></span
+          <span class="option__title">{{ this.options.name }}</span></span
         ></template
       >
       <template slot="option"
         ><img
           style="width:100%;"
           class="option__image"
-          :src="options.image"
-          :alt="options.name"
+          :src="this.options.image"
+          :alt="this.options.name"
         />
         <div class="option__desc">
-          <span class="option__title">{{ options.name }}</span
-          ><span class="option__small">{{ options.id }}</span>
+          {{ console.log(options) }}
+          <span class="option__title">{{ this.options.name }}</span
+          ><span class="option__small">{{ this.options.id }}</span>
         </div>
       </template>
     </multiselect>
