@@ -126,11 +126,9 @@ export default {
         .then(json => {
           this.options = json.hits.hits.map(product => {
             // eslint-disable-next-line no-console
-            console.log(
-              product._source.productfields &&
-                product._source.productfields.image_closeup &&
-                product._source.productfields.image_closeup.salsifysource_url
-            );
+            console.log(product._source.productfields);
+            // eslint-disable-next-line no-console
+            console.log(Math.random());
             return {
               id: product._id,
               name: product._source.productfields.product_name["en-us"],
