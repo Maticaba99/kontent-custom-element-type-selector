@@ -12,15 +12,13 @@
       :disabled="element.disabled"
       @input="onSelect"
     >
-      <!-- <template slot="singleLabel"
-        ><img
-          class="option__image"
-          :src="options.image"
-          :alt="options.name"
-        /><span /><span class="option__desc"
-          ><span class="option__title">{{ options.name }}</span></span
+      <template slot="singleLabel">
+        <img class="option__image" :src="options.image" :alt="options.name" />
+        />
+        <span class="option__desc">
+          <span class="option__title">{{ options.name }}</span></span
         ></template
-      > -->
+      >
       <template slot="option"
         ><img class="option__image" :src="options.image" :alt="options.name" />
         <div class="option__desc">
@@ -80,10 +78,7 @@ export default {
         .then(json => {
           this.options = json.hits.hits.map(product => {
             // eslint-disable-next-line no-console
-            console.log(
-              product._source.productcard &&
-                product._source.productcard.featureimage
-            );
+            console.log(product);
             return {
               id: product._id,
               name: product._source.productfields.product_name["en-us"],
