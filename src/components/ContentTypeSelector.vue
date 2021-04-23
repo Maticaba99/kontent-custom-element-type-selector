@@ -87,39 +87,41 @@ export default {
     fetchTypes(searchTerm) {
       // eslint-disable-next-line no-console
       console.log(searchTerm);
+      const POST_BODY = {
+        from: 0,
+        size: 100,
+        query: {
+          bool: {
+            must: [
+              {
+                match: {
+                  "productfields.salsifydata_inheritance_hierarchy_level_id":
+                    "Base"
+                }
+              },
+              {
+                wildcard: {
+                  "productfields.product_name.en-us": searchTerm
+                }
+              },
+              {
+                exists: {
+                  field: "productcard"
+                }
+              }
+            ]
+          }
+        }
+      };
       fetch(
         `https://6d1a49bf49e44b74a37bcaa0edf1d9e7.eastus2.azure.elastic-cloud.com:9243/products/_search`,
         {
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Basic ZWxhc3RpYzpXNFRDNTVFTUdRUmx5a0F2ZVZaOVVnTjM`
           },
-          data: JSON.stringify({
-            from: 0,
-            size: 50,
-            query: {
-              bool: {
-                must: [
-                  {
-                    match: {
-                      "productfields.salsifydata_inheritance_hierarchy_level_id":
-                        "Base"
-                    }
-                  },
-                  {
-                    wildcard: {
-                      "productfields.product_name.en-us": searchTerm
-                    }
-                  },
-                  {
-                    exists: {
-                      field: "productcard"
-                    }
-                  }
-                ]
-              }
-            }
-          })
+          data: JSON.stringify(POST_BODY)
         }
       )
         .then(response => response.json())
