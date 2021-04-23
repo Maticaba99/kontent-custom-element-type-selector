@@ -101,7 +101,7 @@ export default {
               },
               {
                 wildcard: {
-                  "productfields.product_name.en-us": searchTerm
+                  "productfields.product_name.en-us": "one"
                 }
               },
               {
@@ -113,6 +113,7 @@ export default {
           }
         }
       };
+      this.isLoading = true;
       fetch(
         `https://6d1a49bf49e44b74a37bcaa0edf1d9e7.eastus2.azure.elastic-cloud.com:9243/products/_search`,
         {
@@ -129,8 +130,6 @@ export default {
           this.options = json.hits.hits.map(product => {
             // eslint-disable-next-line no-console
             console.log(product._source);
-            // eslint-disable-next-line no-console
-            console.log(Math.random());
             return {
               id: product._id,
               name: product._source.productfields.product_name["en-us"],
