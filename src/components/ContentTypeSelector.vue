@@ -2,7 +2,7 @@
   <div>
     <multiselect
       v-model="selectedTypes"
-      placeholder="Select types"
+      placeholder="Select products"
       open-direction="bottom"
       :options="options"
       :multiple="true"
@@ -12,12 +12,21 @@
       :disabled="element.disabled"
       @input="onSelect"
     >
-      <template slot="singleLabel" slot-scope="{ option }">
-        <div class="title">{{ option.name }}</div>
-        <div class="sku">{{ option.id }}</div>
-        <!-- eslint-disable-next-line prettier/prettier -->
-        <img class="preview" src={{option.image}} />
-        <!-- <strong>{{ option.sys.name }}</strong> -->
+      <template slot="singleLabel"
+        ><img
+          class="preview"
+          :src="options.image"
+          :alt="options.name"
+        /><span /><span class="option__desc"
+          ><span class="option__title">{{ options.name }}</span></span
+        ></template
+      >
+      <template slot="option"
+        ><img class="option__image" :src="options.image" :alt="options.name" />
+        <div class="option__desc">
+          <span class="option__title">{{ options.name }}</span
+          ><span class="option__small">{{ options.id }}</span>
+        </div>
       </template>
     </multiselect>
   </div>
