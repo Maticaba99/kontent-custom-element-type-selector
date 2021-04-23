@@ -47,9 +47,10 @@ export default {
   created: function() {
     try {
       CustomElement.init(this.initialize);
-      console.log(this.context, '1'),
-      console.log(this.element),
-      CustomElement.onDisabledChanged(this.handleDisable);
+      /* eslint-disable no-console */
+      console.log(this.context, "1"),
+        console.log(this.element),
+        CustomElement.onDisabledChanged(this.handleDisable);
       CustomElement.observeElementChanges([], elementCodename => {
         GlobalEventBus.$emit("onElementChanged", elementCodename[0]);
       });
