@@ -9,19 +9,27 @@
       :multiple="true"
       :loading="isLoading"
       label="name"
-      track-by="codename"
+      track-by="name"
       :disabled="element.disabled"
       @input="onSelect"
     >
-      <template slot="singleLabel">
-        <img class="option__image" :src="options.image" :alt="options.name" />
+      <template slot="singleLabel" slot-scope="props">
+        <img
+          class="option__image"
+          :src="props.options.image"
+          :alt="props.options.name"
+        />
         />
         <span class="option__desc">
           <span class="option__title">{{ options.name }}</span></span
         ></template
       >
-      <template slot="option"
-        ><img class="option__image" :src="options.image" :alt="options.name" />
+      <template slot="option" slot-scope="props"
+        ><img
+          class="option__image"
+          :src="props.options.image"
+          :alt="props.options.name"
+        />
         <div class="option__desc">
           <span class="option__title">{{ options.name }}</span
           ><span class="option__small">{{ options.id }}</span>
