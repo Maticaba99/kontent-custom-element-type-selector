@@ -1,43 +1,39 @@
 <template>
   <div>
+    <label class="typo__label">Custom option template</label>
     <multiselect
       v-model="selectedTypes"
-      placeholder="Select products"
-      open-direction="bottom"
+      placeholder="Fav No Man’s Sky path"
+      label="title"
+      track-by="title"
       :options="options"
       :option-height="104"
       :multiple="true"
       :loading="isLoading"
-      label="name"
-      track-by="name"
-      :disabled="element.disabled"
-      @input="onSelect"
+      :custom-label="customLabel"
+      :show-labels="false"
     >
-      <template slot="singleLabel">
-        <img
-          style="width:100%;"
+      <template slot="singleLabel"
+        ><img
           class="option__image"
-          :src="this.options.image"
-          :alt="this.options.name"
-        />
-        <span class="option__desc">
-          <span class="option__title">{{ this.options.name }}</span></span
+          :src="option.img"
+          alt="No Man’s Sky"
+        /><span /><span class="option__desc"
+          ><span class="option__title">{{ option.title }}</span></span
         ></template
       >
       <template slot="option"
-        ><img
-          style="width:100%;"
-          class="option__image"
-          :src="this.options.image"
-          :alt="this.options.name"
-        />
+        ><img class="option__image" :src="option.img" alt="No Man’s Sky" />
         <div class="option__desc">
-          {{ console.log(this.options) }}
-          <span class="option__title">{{ this.options.name }}</span
-          ><span class="option__small">{{ this.options.id }}</span>
+          <span class="option__title">{{ option.title }}</span
+          ><span class="option__small">{{ option.desc }}</span>
         </div>
+        <script>
+          console.log("ndea");
+        </script>
       </template>
     </multiselect>
+    <pre class="language-json"><code>{{ value  }}</code></pre>
   </div>
 </template>
 
