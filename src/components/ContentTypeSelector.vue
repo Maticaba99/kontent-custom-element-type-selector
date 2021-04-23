@@ -132,10 +132,7 @@ export default {
             return {
               id: product._id,
               name: product._source.productfields.product_name["en-us"],
-              image:
-                product._source.productfields &&
-                product._source.productfields.image_closeup &&
-                product._source.productfields.image_closeup.salsifysource_url
+              image: product._source.productcard.featureimage
             };
           });
           this.isLoading = false;
