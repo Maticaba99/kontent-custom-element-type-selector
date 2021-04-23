@@ -52,7 +52,6 @@
 
 <script>
 import Multiselect from "vue-multiselect";
-import axios from "axios";
 
 export default {
   components: {
@@ -86,7 +85,6 @@ export default {
       return `and ${count} other countries`;
     },
     async fetchTypes(query) {
-      // eslint-disable-next-line no-console
       const POST_BODY = {
         from: 0,
         size: 100,
@@ -114,32 +112,13 @@ export default {
         }
       };
       this.isLoading = true;
-      const postsAx = await axios
-        .post(
-          "https://6d1a49bf49e44b74a37bcaa0edf1d9e7.eastus2.azure.elastic-cloud.com:9243/products/_search",
-          POST_BODY,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Basic ZWxhc3RpYzpXNFRDNTVFTUdRUmx5a0F2ZVZaOVVnTjM`
-            }
-          }
-        )
-        .then(res => {
-          // eslint-disable-next-line no-console
-          console.log(res);
-        })
-        // eslint-disable-next-line no-console
-        .catch(err => console.log(err));
-      // eslint-disable-next-line no-console
-      console.log(postsAx);
       await fetch(
         `https://6d1a49bf49e44b74a37bcaa0edf1d9e7.eastus2.azure.elastic-cloud.com:9243/products/_search`,
         {
-          method: "POST",
+          method: "post",
           headers: {
-            "Content-Type": "application/json",
-            Authorization: `Basic ZWxhc3RpYzpXNFRDNTVFTUdRUmx5a0F2ZVZaOVVnTjM`
+            Authorization: "Basic ZWxhc3RpYzpXNFRDNTVFTUdRUmx5a0F2ZVZaOVVnTjM",
+            "Content-Type": "application/json"
           },
           data: JSON.stringify(POST_BODY)
         }
