@@ -17,7 +17,7 @@
         <img
           style="width:100%;"
           class="option__image"
-          :src="this.options.image"
+          :src="options.image"
           :alt="options.name"
         />
         <span class="option__desc">
