@@ -43,7 +43,8 @@ export default {
     element: {},
     context: {},
     value: null,
-    filter: ""
+    filter: "",
+    secureAccess: ""
   }),
   created: function() {
     try {
@@ -74,9 +75,11 @@ export default {
     },
     initialize: function(element, context) {
       /* eslint-disable no-console */
-      console.log(element.config);
+      console.log(element.config.secureAccess);
       this.element = element;
       this.context = context;
+      this.secureAccess = element.config.secureAccess;
+      this.filter = element.config.filter;
       this.value = this.element.value ? JSON.parse(this.element.value) : null;
       this.loaded = true;
       this.updateSize();
