@@ -101,7 +101,7 @@ export default {
               },
               {
                 wildcard: {
-                  "productfields.product_name.en-us": "one"
+                  "productfields.product_name.en-us": searchTerm
                 }
               },
               {
@@ -114,7 +114,7 @@ export default {
         }
       };
       this.isLoading = true;
-      fetch(
+      const fetching = fetch(
         `https://6d1a49bf49e44b74a37bcaa0edf1d9e7.eastus2.azure.elastic-cloud.com:9243/products/_search`,
         {
           method: "POST",
@@ -138,6 +138,8 @@ export default {
           });
           this.isLoading = false;
         });
+      // eslint-disable-next-line no-console
+      console.log(fetching);
     },
     onSelect: function() {
       this.save(this.selectedTypes);
