@@ -42,15 +42,14 @@ export default {
     errorMessage: "",
     element: {},
     context: {},
-    value: null
+    value: null,
+    filter: ""
   }),
   created: function() {
     try {
       CustomElement.init(this.initialize);
-      /* eslint-disable no-console */
-      console.log(this.context, "1"),
-        console.log(this.element),
-        CustomElement.onDisabledChanged(this.handleDisable);
+
+      CustomElement.onDisabledChanged(this.handleDisable);
       CustomElement.observeElementChanges([], elementCodename => {
         GlobalEventBus.$emit("onElementChanged", elementCodename[0]);
       });
@@ -74,6 +73,8 @@ export default {
       this.element.disabled = disableState;
     },
     initialize: function(element, context) {
+      /* eslint-disable no-console */
+      console.log(element, context);
       this.element = element;
       this.context = context;
       this.value = this.element.value ? JSON.parse(this.element.value) : null;
