@@ -12,7 +12,7 @@
       :disabled="element.disabled"
       @input="onSelect"
     >
-      <template slot="singleLabel"
+      <!-- <template slot="singleLabel"
         ><img
           class="option__image"
           :src="options.image"
@@ -20,7 +20,7 @@
         /><span /><span class="option__desc"
           ><span class="option__title">{{ options.name }}</span></span
         ></template
-      >
+      > -->
       <template slot="option"
         ><img class="option__image" :src="options.image" :alt="options.name" />
         <div class="option__desc">
