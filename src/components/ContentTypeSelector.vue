@@ -69,8 +69,6 @@ export default {
       )
         .then(response => response.json())
         .then(json => {
-          /* eslint-disable no-console */
-          console.log(json, "that", this.element.config.filter);
           this.options = json.items.map(type => type.system);
           this.isLoading = false;
         });
