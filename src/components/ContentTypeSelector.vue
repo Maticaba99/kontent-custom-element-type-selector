@@ -55,7 +55,14 @@ export default {
     },
     fetchTypes() {
       fetch(
-        `https://deliver.kontent.ai/${this.context.projectId}/types?elements=null`
+        `https://deliver.kontent.ai/${this.context.projectId}/types?elements=null`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization:
+              "Bearer ew0KICAiYWxnIjogIkhTMjU2IiwNCiAgInR5cCI6ICJKV1QiDQp9.ew0KICAianRpIjogIjcxMjE2OGY5MTkxYzRiMWI5OWUzYmZmYWZiMjMxZDAxIiwNCiAgImlhdCI6ICIxNjE1NDI1MjkzIiwNCiAgImV4cCI6ICIxOTYxMDI1MjkzIiwNCiAgInByb2plY3RfaWQiOiAiMzMyMGM0NTBkMGZjMDAzZTA0NTA5ODVjYzczOWVmNDciLA0KICAidmVyIjogIjEuMC4wIiwNCiAgImF1ZCI6ICJkZWxpdmVyLmtlbnRpY29jbG91ZC5jb20iDQp9.6CBhVGn4KC3uJeUrD-9XOOTY9Zt81LCegZTzateG5LM"
+          }
+        }
       )
         .then(response => response.json())
         .then(json => {
