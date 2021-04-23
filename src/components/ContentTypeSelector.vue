@@ -52,6 +52,7 @@
 
 <script>
 import Multiselect from "vue-multiselect";
+import axios from "axios";
 
 export default {
   components: {
@@ -112,9 +113,20 @@ export default {
           }
         }
       };
-      // eslint-disable-next-line no-console
-      console.log(POST_BODY, "what?");
       this.isLoading = true;
+
+      const postAx = axios.post(
+        "https://6d1a49bf49e44b74a37bcaa0edf1d9e7.eastus2.azure.elastic-cloud.com:9243/products/_search",
+        {
+          headers: {
+            "Content-Type": "application/json;charset=utf-8",
+            Authorization: `Basic ZWxhc3RpYzpXNFRDNTVFTUdRUmx5a0F2ZVZaOVVnTjM`
+          },
+          data: JSON.stringify(POST_BODY)
+        }
+      );
+      // eslint-disable-next-line no-console
+      console.log(postAx);
       await fetch(
         `https://6d1a49bf49e44b74a37bcaa0edf1d9e7.eastus2.azure.elastic-cloud.com:9243/products/_search`,
         {
@@ -128,10 +140,6 @@ export default {
       )
         .then(response => response.json())
         .then(json => {
-          // eslint-disable-next-line no-console
-          console.log(this.options);
-          // eslint-disable-next-line no-console
-          console.log(POST_BODY, "what?");
           this.options = json.hits.hits.map(product => {
             // eslint-disable-next-line no-console
             console.log(product._source.productfields.product_name["en-us"]);
