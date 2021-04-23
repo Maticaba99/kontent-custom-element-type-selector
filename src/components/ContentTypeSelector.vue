@@ -113,7 +113,7 @@ export default {
         }
       };
       this.isLoading = true;
-      const fetching = await fetch(
+      await fetch(
         `https://6d1a49bf49e44b74a37bcaa0edf1d9e7.eastus2.azure.elastic-cloud.com:9243/products/_search`,
         {
           method: "POST",
