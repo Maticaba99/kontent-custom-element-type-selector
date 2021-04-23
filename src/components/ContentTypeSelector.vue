@@ -4,8 +4,8 @@
     <multiselect
       v-model="selectedTypes"
       placeholder="Fav No Man’s Sky path"
-      label="title"
-      track-by="title"
+      label="name"
+      track-by="name"
       :options="options"
       :option-height="104"
       :multiple="true"
