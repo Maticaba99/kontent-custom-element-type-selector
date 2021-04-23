@@ -129,7 +129,7 @@ export default {
           // eslint-disable-next-line no-console
           console.log(this.options);
           // eslint-disable-next-line no-console
-          console.log(json.hits.hits);
+          console.log(POST_BODY);
           this.options = json.hits.hits.map(product => {
             // eslint-disable-next-line no-console
             console.log(product._source.productfields.product_name["en-us"]);
@@ -156,5 +156,5 @@ export default {
 </script>
 
 <style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.1/axios.min.js"></script>
 <style scoped></style>
