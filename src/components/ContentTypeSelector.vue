@@ -97,7 +97,7 @@ export default {
                     "Base"
                 }
               },
-              {
+              query && {
                 wildcard: {
                   "productfields.product_name.en-us": query
                 }
