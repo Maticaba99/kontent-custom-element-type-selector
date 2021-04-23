@@ -19,13 +19,13 @@
           :src="options.image"
           alt="No Man’s Sky"
         /><span /><span class="option__desc"
-          ><span class="option__title">{{ options.title }}</span></span
+          ><span class="option__title">{{ options.name }}</span></span
         ></template
       >
       <template slot="option"
         ><img class="option__image" :src="options.image" alt="No Man’s Sky" />
         <div class="option__desc">
-          <span class="option__title">{{ options.title }}</span
+          <span class="option__title">{{ options.name }}</span
           ><span class="option__small">{{ options.desc }}</span>
         </div>
       </template>
