@@ -2422,3 +2422,7 @@ input:checked:disabled+.switch:before{
 input:checked~.switch__label{
   color:#2196f3;
 }
+.option__image{
+  height: 100px;
+  width: 100px;
+}

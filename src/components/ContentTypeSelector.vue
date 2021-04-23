@@ -14,7 +14,7 @@
     >
       <template slot="singleLabel"
         ><img
-          class="preview"
+          class="option__image"
           :src="options.image"
           :alt="options.name"
         /><span /><span class="option__desc"
