@@ -33,7 +33,11 @@
             />
             <div>
               <span class="remove" @click="props.remove(props.option)">❌</span>
-              <span class="add" @click="props.option.quantity + 1">+</span>
+              <span
+                class="add"
+                @click="props.option.quantity = props.option.quantity + 1"
+                >+</span
+              >
             </div>
           </div>
 
