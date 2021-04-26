@@ -29,7 +29,6 @@
           :src="props.option.image"
           :alt="props.option.name"
         />
-        />
         <span class="option__desc">
           <span class="option__title">{{ props.option.name }}</span></span
         ></template
@@ -154,7 +153,7 @@ export default {
       this.$emit("update:value", value);
     },
     customLabel({ name, id }) {
-      return `${name} |a ${id}`;
+      return `${name}  ${id}`;
     }
   }
 };
