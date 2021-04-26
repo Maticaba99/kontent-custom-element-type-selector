@@ -36,8 +36,8 @@
               <span
                 class="add"
                 @click="
-                  props.option.quantity =
-                    props.option.quantity + 1 && onSelect()
+                  (props.option.quantity = props.option.quantity + 1) &&
+                    onSelect()
                 "
                 >➕</span
               >
