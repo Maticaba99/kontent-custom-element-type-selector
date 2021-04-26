@@ -8,6 +8,7 @@
       :hide-selected="true"
       :options="options"
       :option-height="104"
+      :multiple="true"
       :loading="isLoading"
       :internal-search="false"
       :close-on-select="false"
@@ -22,7 +23,7 @@
       :custom-label="customLabel"
       :show-labels="false"
     >
-      <template slot="singleLabel" slot-scope="props">
+      <template slot="selection" slot-scope="props">
         <img
           class="option__image"
           :src="props.option.image"
@@ -133,7 +134,6 @@ export default {
           // eslint-disable-next-line no-console
           console.log(json);
           this.options = json.hits.hits.map(product => {
-            // eslint-disable-next-line no-console
             return {
               id: product._source.productfields.unique_id,
               name: product._source.productfields.product_name["en-us"],
