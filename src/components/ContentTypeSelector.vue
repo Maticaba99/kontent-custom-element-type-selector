@@ -26,7 +26,7 @@
       <template slot="tag" slot-scope="props">
         <img
           class="option__image"
-          :src="props.image"
+          :src="props.option.image"
           :alt="props.option.name"
         />
         <!--  <span class="option__desc">
