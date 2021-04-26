@@ -24,11 +24,11 @@
       :show-labels="false"
     >
       <template slot="selection" slot-scope="props">
-        <img
+        <!--     <img
           class="option__image"
           :src="props.option.image"
           :alt="props.option.name"
-        />
+        /> -->
         <span class="option__desc">
           <span class="option__title">{{ props.option.name }}tast</span></span
         ></template
