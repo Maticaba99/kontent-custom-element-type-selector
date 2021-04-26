@@ -30,9 +30,9 @@
           :alt="props.option.name"
         />
         <span class="option__desc">
-          <span class="option__title">{{ props.option.name }}</span></span
-        >
-        <span slot="remove">X</span>
+          <span class="option__title">{{ props.option.name }}</span>
+          <span slot="remove">X</span>
+        </span>
       </template>
 
       <template slot="option" slot-scope="props"
