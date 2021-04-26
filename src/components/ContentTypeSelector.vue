@@ -44,7 +44,11 @@
                 @click="props.option.quantity = props.option.quantity + 1"
                 >➕</span
               >
-              <span class="remove" @click="onSelect">✔</span>
+              <span
+                class="remove"
+                @click="selectedTypes.push([]) && selectedTypes.pop()"
+                >✔</span
+              >
             </div>
           </div>
           <span class="option__desc">
