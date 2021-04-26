@@ -2431,3 +2431,7 @@ input:checked~.switch__label{
   max-height: 80px;
   margin-right: 10px;
 }
+.option__desc{
+  display: flex;
+  flex-direction: column;
+}
