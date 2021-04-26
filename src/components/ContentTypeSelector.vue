@@ -16,6 +16,7 @@
       track-by="name"
       :disabled="element.disabled"
       @input="onSelect"
+      @onChange="onSelect"
       @search-change="fetchTypes"
       :clear-on-select="false"
       :options-limit="300"
