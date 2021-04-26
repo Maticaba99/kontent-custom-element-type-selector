@@ -25,17 +25,20 @@
     >
       <template slot="tag" slot-scope="props">
         <div>
-          <img
-            class="option__image"
-            :src="props.option.image"
-            :alt="props.option.name"
-          />
-          <span @click="props.remove(props.option)">❌</span>
-        </div>
+          <div>
+            <img
+              class="option__image"
+              :src="props.option.image"
+              :alt="props.option.name"
+            />
+            <span @click="props.remove(props.option)">❌</span>
+          </div>
 
-        <span class="option__desc">
-          <span class="option__title">{{ props.option.name }}</span>
-        </span>
+          <span class="option__desc">
+            <span class="option__title">{{ props.option.name }}</span>
+            <span class="option__title">{{ props.option.quantity }}</span>
+          </span>
+        </div>
       </template>
 
       <template slot="option" slot-scope="props"
@@ -146,7 +149,8 @@ export default {
                 product._source.productcard.dimensionsin,
               image:
                 product._source.productcard &&
-                product._source.productcard.featureimage
+                product._source.productcard.featureimage,
+              quantity: 1
             };
           });
           this.isLoading = false;
