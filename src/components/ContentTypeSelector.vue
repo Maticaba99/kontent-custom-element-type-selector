@@ -120,17 +120,14 @@ export default {
         }
       };
       this.isLoading = true;
-      await fetch(
-        `https://6d1a49bf49e44b74a37bcaa0edf1d9e7.eastus2.azure.elastic-cloud.com:9243/products/_search`,
-        {
-          method: "post",
-          headers: {
-            Authorization: "Basic ZWxhc3RpYzpXNFRDNTVFTUdRUmx5a0F2ZVZaOVVnTjM",
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(POST_BODY)
-        }
-      )
+      await fetch(this.element.config.API, {
+        method: "post",
+        headers: {
+          Authorization: `Basic ${this.element.config.API_AUTH}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(POST_BODY)
+      })
         .then(response => response.json())
         .then(json => {
           this.options = json.hits.hits.map(product => {
@@ -139,7 +136,8 @@ export default {
             return {
               id: product._source.productfields.unique_id,
               name: product._source.productfields.product_name["en-us"],
-              dimensions:product._source.productcard &&
+              dimensions:
+                product._source.productcard &&
                 product._source.productcard.dimensionsin,
               image:
                 product._source.productcard &&
@@ -156,7 +154,7 @@ export default {
       this.$emit("update:value", value);
     },
     customLabel({ name, id }) {
-      return `${name} – ${id}`;
+      return `${name} |a ${id}`;
     }
   }
 };
