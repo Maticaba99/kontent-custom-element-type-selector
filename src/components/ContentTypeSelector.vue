@@ -8,7 +8,6 @@
       :hide-selected="true"
       :options="options"
       :option-height="104"
-      :multiple="true"
       :loading="isLoading"
       :internal-search="false"
       :close-on-select="false"
@@ -135,7 +134,6 @@ export default {
           console.log(json);
           this.options = json.hits.hits.map(product => {
             // eslint-disable-next-line no-console
-            /*             console.log(product._source); */
             return {
               id: product._source.productfields.unique_id,
               name: product._source.productfields.product_name["en-us"],
