@@ -2439,3 +2439,9 @@ input:checked~.switch__label{
 .multiselect__tags-wrap{
   display: flex;
 }
+.imageContainer{
+  display: flex;
+}
+.container{
+  max-width: 125px;
+}

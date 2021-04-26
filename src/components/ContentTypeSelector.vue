@@ -24,8 +24,8 @@
       :show-labels="false"
     >
       <template slot="tag" slot-scope="props">
-        <div>
-          <div>
+        <div class="container">
+          <div class="imageContainer">
             <img
               class="option__image"
               :src="props.option.image"
@@ -35,8 +35,12 @@
           </div>
 
           <span class="option__desc">
-            <span class="option__title">{{ props.option.name }}</span>
-            <span class="option__title">{{ props.option.quantity }}</span>
+            <span class="option__title"
+              ><strong>Name:</strong> {{ props.option.name }}</span
+            >
+            <span class="option__title"
+              ><strong>Quantity: </strong> {{ props.option.quantity }}</span
+            >
           </span>
         </div>
       </template>
