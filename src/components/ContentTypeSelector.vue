@@ -44,7 +44,7 @@
           <span class="option__title">Title: {{ props.option.name }}</span
           ><span class="option__small">ID: {{ props.option.id }}</span>
           <span class="option__small"
-            >Dimensions: {{ props.option.dimensions }}</span
+            >dimensions: {{ props.option.dimensions }}</span
           >
         </div>
       </template>
