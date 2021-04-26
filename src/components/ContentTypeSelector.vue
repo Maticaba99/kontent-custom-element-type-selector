@@ -108,12 +108,12 @@ export default {
             should: [
               {
                 wildcard: {
-                  "productfields.product_name.en-us": query
+                  "productfields.product_name.en-us": query && query
                 }
               },
               {
                 wildcard: {
-                  "productfields.unique_id": query
+                  "productfields.unique_id": query && query
                 }
               }
             ]
