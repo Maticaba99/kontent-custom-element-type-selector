@@ -29,9 +29,9 @@
           :src="props.option.image"
           :alt="props.option.name"
         />
-        <!--  <span class="option__desc">
+        <span class="option__desc">
           <span class="option__title">{{ props.option.name }}tast</span></span
-        > --></template
+        ></template
       >
 
       <template slot="option" slot-scope="props"
