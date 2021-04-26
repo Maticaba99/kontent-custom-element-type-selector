@@ -41,9 +41,11 @@
           :alt="props.option.name"
         />
         <div class="option__desc">
-          <span class="option__title">{{ props.option.name }}</span
-          ><span class="option__small">{{ props.option.id }}</span>
-          <span class="option__small">{{ props.option.dimensions }}</span>
+          <span class="option__title">Title: {{ props.option.name }}</span
+          ><span class="option__small">ID: {{ props.option.id }}</span>
+          <span class="option__small"
+            >Dimensions: {{ props.option.dimensions }}</span
+          >
         </div>
       </template>
     </multiselect>
@@ -106,12 +108,12 @@ export default {
             should: [
               {
                 wildcard: {
-                  "productfields.product_name.en-us": query && query
+                  "productfields.product_name.en-us": query
                 }
               },
               {
                 wildcard: {
-                  "productfields.unique_id": query && query
+                  "productfields.unique_id": query
                 }
               }
             ]
