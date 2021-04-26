@@ -155,11 +155,7 @@ export default {
       this.$emit("update:value", value);
     },
     customLabel({ name, id }) {
-      return (
-        <div>
-          `${name} -- ${id}`
-        </div>
-      );
+      return `${name} -- ${id}`;
     }
   }
 };
