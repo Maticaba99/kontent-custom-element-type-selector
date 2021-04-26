@@ -20,7 +20,6 @@
       :clear-on-select="false"
       :options-limit="300"
       :limit-text="limitText"
-      :custom-label="customLabel"
       :show-labels="false"
     >
       <template slot="selection">
@@ -155,9 +154,6 @@ export default {
     },
     save: function(value) {
       this.$emit("update:value", value);
-    },
-    customLabel({ name, id }) {
-      return `${name} -- ${id}`;
     }
   }
 };
