@@ -43,9 +43,7 @@
                 @click="props.option.quantity = props.option.quantity + 1"
                 >➕</span
               >
-              <span class="remove" @click="this.save(this.selectedTypes)"
-                >✔</span
-              >
+              <span class="remove" @click="save(this.selectedTypes)">✔</span>
             </div>
           </div>
           <span class="option__desc">
