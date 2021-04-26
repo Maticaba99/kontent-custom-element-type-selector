@@ -44,6 +44,7 @@
         <div class="option__desc">
           <span class="option__title">{{ props.option.name }}</span
           ><span class="option__small">{{ props.option.id }}</span>
+          <span class="option__small">{{ props.option.dimensions }}</span>
         </div>
       </template>
     </multiselect>
@@ -97,14 +98,21 @@ export default {
                     "Base"
                 }
               },
-              query && {
+              {
+                exists: {
+                  field: "productcard"
+                }
+              }
+            ],
+            should: [
+              {
                 wildcard: {
                   "productfields.product_name.en-us": query
                 }
               },
               {
-                exists: {
-                  field: "productcard.featureimage"
+                wildcard: {
+                  "productfields.unique_id": query
                 }
               }
             ]
@@ -129,8 +137,10 @@ export default {
             // eslint-disable-next-line no-console
             console.log(product._source);
             return {
-              id: product._id,
+              id: product._source.productfields.unique_id,
               name: product._source.productfields.product_name["en-us"],
+              dimensions:product._source.productcard &&
+                product._source.productcard.dimensionsin,
               image:
                 product._source.productcard &&
                 product._source.productcard.featureimage
