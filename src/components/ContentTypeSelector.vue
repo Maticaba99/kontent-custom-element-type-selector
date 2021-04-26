@@ -20,18 +20,17 @@
       :clear-on-select="false"
       :options-limit="300"
       :limit-text="limitText"
+      :custom-label="customLabel"
       :show-labels="false"
     >
-      <template slot="selection">
-        <!--     <img
+      <template slot="singleLabel" slot-scope="props">
+        <img
           class="option__image"
           :src="props.option.image"
           :alt="props.option.name"
-        /> -->
+        />
         <span class="option__desc">
-          <span class="option__title">
-            <!-- {{ props.option.name }}t -->ast</span
-          ></span
+          <span class="option__title">{{ props.option.name }}tast</span></span
         ></template
       >
 
@@ -154,6 +153,9 @@ export default {
     },
     save: function(value) {
       this.$emit("update:value", value);
+    },
+    customLabel({ name, id }) {
+      return `${name} -- ${id}`;
     }
   }
 };
