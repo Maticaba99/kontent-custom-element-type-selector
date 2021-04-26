@@ -2451,3 +2451,7 @@ input:checked~.switch__label{
 .add:hover{
   cursor: pointer;
 }
+.events{
+  display: flex;
+  flex-direction: column;
+}

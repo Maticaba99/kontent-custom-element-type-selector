@@ -31,16 +31,15 @@
               :src="props.option.image"
               :alt="props.option.name"
             />
-            <div>
+            <div class="events">
               <span class="remove" @click="props.remove(props.option)">❌</span>
               <span
                 class="add"
                 @click="props.option.quantity = props.option.quantity + 1"
-                >+</span
+                >➕</span
               >
             </div>
           </div>
-
           <span class="option__desc">
             <span class="option__title"
               ><strong>Name:</strong> {{ props.option.name }}</span
