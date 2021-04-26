@@ -23,16 +23,14 @@
       :custom-label="customLabel"
       :show-labels="false"
     >
-      <template slot="singleLabel" slot-scope="props">
-        <img
-          class="option__image"
-          :src="props.option.image"
-          :alt="props.option.name"
-        />
+      <template slot="singleLabel">
+        {{this.selectedTypes.map((item, index) =>(
+        <img class="option__image" :src="item.image" :alt="item.name" />
         <span class="option__desc">
-          <span class="option__title">{{ props.option.name }}tast</span></span
-        ></template
-      >
+          <span class="option__title">{{ item.name }}tast</span></span
+        >
+        ))}}
+      </template>
 
       <template slot="option" slot-scope="props"
         ><img
@@ -153,9 +151,6 @@ export default {
     },
     save: function(value) {
       this.$emit("update:value", value);
-    },
-    customLabel({ name, id }) {
-      return `${name} -- ${id}`;
     }
   }
 };
