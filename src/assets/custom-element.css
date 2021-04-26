@@ -2448,3 +2448,6 @@ input:checked~.switch__label{
 .remove:hover{
   cursor: pointer;
 }
+.add:hover{
+  cursor: pointer;
+}

@@ -32,6 +32,7 @@
               :alt="props.option.name"
             />
             <span class="remove" @click="props.remove(props.option)">❌</span>
+            <span class="add" @click="props.option.quantity + 1">❌</span>
           </div>
 
           <span class="option__desc">
