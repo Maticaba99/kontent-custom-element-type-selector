@@ -35,12 +35,15 @@
               <span class="remove" @click="props.remove(props.option)">❌</span>
               <span
                 class="add"
-                @click="
-                  (props.option.quantity = props.option.quantity + 1) &&
-                    this.onSelect()
-                "
+                @click="props.option.quantity = props.option.quantity - 1"
+                >➖</span
+              >
+              <span
+                class="add"
+                @click="props.option.quantity = props.option.quantity + 1"
                 >➕</span
               >
+              <span class="remove" @click="this.onSelect()">❌</span>
             </div>
           </div>
           <span class="option__desc">
