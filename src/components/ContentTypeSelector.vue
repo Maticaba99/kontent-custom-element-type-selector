@@ -31,7 +31,7 @@
         />
         <span class="option__desc">
           <span class="option__title">{{ props.option.name }}</span>
-          <span slot="remove">X</span>
+          <span @click="props.remove(props.option)">❌</span>
         </span>
       </template>
 
