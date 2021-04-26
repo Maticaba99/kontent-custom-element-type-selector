@@ -2423,15 +2423,7 @@ input:checked~.switch__label{
   color:#2196f3;
 }
 .multiselect__option {
-  display: block;
-  padding: 12px;
-  min-height: 40px;
-  line-height: 16px;
-  text-decoration: none;
-  text-transform: none;
-  position: relative;
-  cursor: pointer;
-  white-space: nowrap;
+  display: flex;
 }
 .option__image {
   display: inline-block;
