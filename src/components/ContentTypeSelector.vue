@@ -31,7 +31,7 @@
               :src="props.option.image"
               :alt="props.option.name"
             />
-            <span @click="props.remove(props.option)">❌</span>
+            <span class="remove" @click="props.remove(props.option)">❌</span>
           </div>
 
           <span class="option__desc">

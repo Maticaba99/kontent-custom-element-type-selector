@@ -2445,3 +2445,6 @@ input:checked~.switch__label{
 .container{
   max-width: 125px;
 }
+.remove:hover{
+  cursor: pointer;
+}
