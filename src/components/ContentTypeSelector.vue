@@ -170,6 +170,8 @@ export default {
         });
     },
     onSelect: function() {
+      // eslint-disable-next-line no-console
+      console.log(this.selectedTypes);
       this.save(this.selectedTypes);
     },
     save: function(value) {
