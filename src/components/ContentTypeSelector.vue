@@ -43,7 +43,7 @@
                 @click="props.option.quantity = props.option.quantity + 1"
                 >➕</span
               >
-              <span class="remove" @input="onSelect">✔</span>
+              <span class="remove" @click="this.console.log(props)">✔</span>
             </div>
           </div>
           <span class="option__desc">
