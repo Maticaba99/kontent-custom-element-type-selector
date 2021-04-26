@@ -23,7 +23,7 @@
       :custom-label="customLabel"
       :show-labels="false"
     >
-      <template slot="selection" slot-scope="props">
+      <template slot="selection">
         <!--     <img
           class="option__image"
           :src="props.option.image"
@@ -31,7 +31,6 @@
         /> -->
         <span class="option__desc">
           <span class="option__title">
-            {{ console.log(props) }}
             <!-- {{ props.option.name }}t -->ast</span
           ></span
         ></template
