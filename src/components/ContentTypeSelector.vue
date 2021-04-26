@@ -120,6 +120,10 @@ export default {
         }
       };
       this.isLoading = true;
+      // eslint-disable-next-line no-console
+      console.log(this.element.config.API);
+      // eslint-disable-next-line no-console
+      console.log(this.element.config.API_AUTH);
       await fetch(this.element.config.API, {
         method: "post",
         headers: {
