@@ -120,10 +120,6 @@ export default {
         }
       };
       this.isLoading = true;
-      // eslint-disable-next-line no-console
-      console.log(this.element.config.API);
-      // eslint-disable-next-line no-console
-      console.log(this.element.config.API_AUTH);
       await fetch(this.element.config.API, {
         method: "post",
         headers: {
@@ -134,9 +130,11 @@ export default {
       })
         .then(response => response.json())
         .then(json => {
+          // eslint-disable-next-line no-console
+          console.log(json);
           this.options = json.hits.hits.map(product => {
             // eslint-disable-next-line no-console
-            console.log(product._source);
+            /*             console.log(product._source); */
             return {
               id: product._source.productfields.unique_id,
               name: product._source.productfields.product_name["en-us"],
