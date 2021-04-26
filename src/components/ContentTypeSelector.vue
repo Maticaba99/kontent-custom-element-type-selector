@@ -24,14 +24,17 @@
       :show-labels="false"
     >
       <template slot="tag" slot-scope="props">
-        <img
-          class="option__image"
-          :src="props.option.image"
-          :alt="props.option.name"
-        />
+        <div>
+          <img
+            class="option__image"
+            :src="props.option.image"
+            :alt="props.option.name"
+          />
+          <span @click="props.remove(props.option)">❌</span>
+        </div>
+
         <span class="option__desc">
           <span class="option__title">{{ props.option.name }}</span>
-          <span @click="props.remove(props.option)">❌</span>
         </span>
       </template>
 
