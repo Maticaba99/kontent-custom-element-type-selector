@@ -143,18 +143,20 @@ export default {
           }
         }
       };
-      // eslint-disable-next-line no-console
-      console.log(typeof POST_BODY);
-      // eslint-disable-next-line no-console
-      console.log(typeof JSON.stringify(lastUpdateValue), "Strinfiy");
-      // eslint-disable-next-line no-console
-      console.log(typeof lastUpdateValue);
-      // eslint-disable-next-line no-console
+
       const firstUpdateValue = this.element.config.QUERY.replace(
         "##query##",
         query
       );
       const lastUpdateValue = firstUpdateValue.replace("##query##", query);
+      // eslint-disable-next-line no-console
+      console.log(typeof POST_BODY);
+      // eslint-disable-next-line no-console
+      console.log(typeof JSON.stringify(POST_BODY));
+      // eslint-disable-next-line no-console
+      console.log(typeof JSON.stringify(lastUpdateValue), "Strinfiy");
+      // eslint-disable-next-line no-console
+      console.log(typeof lastUpdateValue);
       this.isLoading = true;
       await fetch(this.element.config.API, {
         method: "post",
