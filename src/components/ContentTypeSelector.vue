@@ -55,9 +55,7 @@
             <span class="option__title"
               ><strong>{{ props.option.name }}</strong></span
             >
-             <span class="option__title"
-              >{{ props.option.id }}</span
-            >
+            <span class="option__title">{{ props.option.id }}</span>
             <span class="option__title"
               ><strong>Qty: </strong> {{ props.option.quantity }}</span
             >
@@ -66,7 +64,7 @@
             >
             <span class="option__title"
               ><strong>USD: </strong> {{ props.option.price_usd }}</span
-            >                        
+            >
           </span>
         </div>
       </template>
@@ -78,11 +76,10 @@
           :alt="props.option.name"
         />
         <div class="option__desc">
-          <span class="option__title"><strong>{{ props.option.name }}</strong></span
+          <span class="option__title"
+            ><strong>{{ props.option.name }}</strong></span
           ><span class="option__small">{{ props.option.id }}</span>
-          <span class="option__small"
-            >{{ props.option.dimensions }}</span
-          >
+          <span class="option__small">{{ props.option.dimensions }}</span>
           <span class="option__small">CAD:{{ props.option.price_cad }}</span>
           <span class="option__small">USD:{{ props.option.price_usd }}</span>
         </div>
@@ -146,8 +143,11 @@ export default {
           }
         }
       };
-      const queryValue = this.element.config.QUERY.replace("##query##", query)
-      console.log(queryValue)
+      // eslint-disable-next-line no-console
+      console.log(this.element.config.QUERY, "prev");
+      const queryValue = this.element.config.QUERY.replace("##query##", query);
+      // eslint-disable-next-line no-console
+      console.log(queryValue);
       this.isLoading = true;
       await fetch(this.element.config.API, {
         method: "post",
@@ -172,8 +172,8 @@ export default {
                 product._source.productcard &&
                 product._source.productcard.featureimage,
               quantity: 1,
-              price_cad:product._source.productfields.base_price_cad,
-              price_usd:product._source.productfields.base_price_usd,
+              price_cad: product._source.productfields.base_price_cad,
+              price_usd: product._source.productfields.base_price_usd
             };
           });
           this.isLoading = false;
