@@ -123,38 +123,16 @@ export default {
       return `and ${count} other countries`;
     },
     async fetchTypes(query) {
-      const POST_BODY = {
-        from: 0,
-        size: 100,
-        query: {
-          bool: {
-            should: [
-              {
-                wildcard: {
-                  "productfields.product_name.en-us": query && query
-                }
-              },
-              {
-                match: {
-                  "productfields.unique_id": query && query
-                }
-              }
-            ]
-          }
-        }
-      };
-
       const firstUpdateValue = this.element.config.QUERY.replace(
         "##query##",
         query
       );
       const lastUpdateValue = firstUpdateValue.replace("##query##", query);
+      const parsedValue = JSON.parse(lastUpdateValue);
       // eslint-disable-next-line no-console
-      console.log(typeof POST_BODY);
+      console.log(parsedValue);
       // eslint-disable-next-line no-console
-      console.log(typeof JSON.stringify(POST_BODY));
-      // eslint-disable-next-line no-console
-      console.log(typeof JSON.stringify(lastUpdateValue), "Strinfiy");
+      console.log(typeof parsedValue, "Strinfiy");
       // eslint-disable-next-line no-console
       console.log(typeof lastUpdateValue);
       this.isLoading = true;
@@ -164,7 +142,7 @@ export default {
           Authorization: `Basic ${this.element.config.API_AUTH}`,
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(lastUpdateValue)
+        body: lastUpdateValue
       })
         .then(response => response.json())
         .then(json => {
