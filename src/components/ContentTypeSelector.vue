@@ -123,31 +123,13 @@ export default {
       return `and ${count} other countries`;
     },
     async fetchTypes(query) {
-      const POST_BODY = {
-        from: 0,
-        size: 100,
-        query: {
-          bool: {
-            should: [
-              {
-                wildcard: {
-                  "productfields.product_name.en-us": query && query
-                }
-              },
-              {
-                match: {
-                  "productfields.unique_id": query && query
-                }
-              }
-            ]
-          }
-        }
-      };
+      const firstUpdateValue = this.element.config.QUERY.replace(
+        "##query##",
+        query
+      );
+      const lastUpdateValue = firstUpdateValue.replace("##query##", query);
       // eslint-disable-next-line no-console
-      console.log(this.element.config.QUERY, "prev");
-      const queryValue = this.element.config.QUERY.replace("##query##", query);
-      // eslint-disable-next-line no-console
-      console.log(queryValue);
+      console.log(lastUpdateValue);
       this.isLoading = true;
       await fetch(this.element.config.API, {
         method: "post",
@@ -155,7 +137,7 @@ export default {
           Authorization: `Basic ${this.element.config.API_AUTH}`,
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(POST_BODY)
+        body: JSON.stringify(lastUpdateValue)
       })
         .then(response => response.json())
         .then(json => {
