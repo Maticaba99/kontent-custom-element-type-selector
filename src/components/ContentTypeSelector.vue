@@ -25,7 +25,7 @@
       :show-labels="false"
     >
       <template slot="tag" slot-scope="props">
-        <div class="container">
+        <div class="container selectedproduct">
           <div class="imageContainer">
             <img
               class="option__image"
@@ -53,11 +53,20 @@
           </div>
           <span class="option__desc">
             <span class="option__title"
-              ><strong>Name:</strong> {{ props.option.name }}</span
+              ><strong>{{ props.option.name }}</strong></span
+            >
+             <span class="option__title"
+              >{{ props.option.id }}</span
             >
             <span class="option__title"
-              ><strong>Quantity: </strong> {{ props.option.quantity }}</span
+              ><strong>Qty: </strong> {{ props.option.quantity }}</span
             >
+            <span class="option__title"
+              ><strong>CAD: </strong> {{ props.option.price_cad }}</span
+            >
+            <span class="option__title"
+              ><strong>USD: </strong> {{ props.option.price_usd }}</span
+            >                        
           </span>
         </div>
       </template>
@@ -69,11 +78,13 @@
           :alt="props.option.name"
         />
         <div class="option__desc">
-          <span class="option__title">Title: {{ props.option.name }}</span
-          ><span class="option__small">ID: {{ props.option.id }}</span>
+          <span class="option__title"><strong>{{ props.option.name }}</strong></span
+          ><span class="option__small">{{ props.option.id }}</span>
           <span class="option__small"
-            >dimensions: {{ props.option.dimensions }}</span
+            >{{ props.option.dimensions }}</span
           >
+          <span class="option__small">CAD:{{ props.option.price_cad }}</span>
+          <span class="option__small">USD:{{ props.option.price_usd }}</span>
         </div>
       </template>
     </multiselect>
@@ -120,19 +131,6 @@ export default {
         size: 100,
         query: {
           bool: {
-            must: [
-              {
-                match: {
-                  "productfields.salsifydata_inheritance_hierarchy_level_id":
-                    "Base"
-                }
-              },
-              {
-                exists: {
-                  field: "productcard"
-                }
-              }
-            ],
             should: [
               {
                 wildcard: {
@@ -140,7 +138,7 @@ export default {
                 }
               },
               {
-                wildcard: {
+                match: {
                   "productfields.unique_id": query && query
                 }
               }
@@ -160,7 +158,7 @@ export default {
         .then(response => response.json())
         .then(json => {
           // eslint-disable-next-line no-console
-          console.log(json);
+          //console.log(json);
           this.options = json.hits.hits.map(product => {
             return {
               id: product._source.productfields.unique_id,
@@ -171,7 +169,9 @@ export default {
               image:
                 product._source.productcard &&
                 product._source.productcard.featureimage,
-              quantity: 1
+              quantity: 1,
+              price_cad:product._source.productfields.base_price_cad,
+              price_usd:product._source.productfields.base_price_usd,
             };
           });
           this.isLoading = false;

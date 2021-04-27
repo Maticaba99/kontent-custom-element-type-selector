@@ -2438,12 +2438,15 @@ input:checked~.switch__label{
 }
 .multiselect__tags-wrap{
   display: flex;
+  margin: 10px;
+  padding:10px;
+  border:1px solid black;
 }
 .imageContainer{
   display: flex;
 }
 .container{
-  max-width: 125px;
+  max-width: 175px;
 }
 .remove:hover{
   cursor: pointer;
@@ -2454,4 +2457,9 @@ input:checked~.switch__label{
 .events{
   display: flex;
   flex-direction: column;
+}
+.selectedproduct{
+  margin:10px;
+  padding:10px;
+  border: 2px dotted green;
 }
