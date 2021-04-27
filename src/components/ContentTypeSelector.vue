@@ -137,7 +137,7 @@ export default {
           Authorization: `Basic ${this.element.config.API_AUTH}`,
           "Content-Type": "application/json"
         },
-        body: JSON.stringify(lastUpdateValue)
+        body: lastUpdateValue
       })
         .then(response => response.json())
         .then(json => {
