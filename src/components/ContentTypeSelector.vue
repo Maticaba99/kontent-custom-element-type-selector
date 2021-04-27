@@ -128,13 +128,6 @@ export default {
         query
       );
       const lastUpdateValue = firstUpdateValue.replace("##query##", query);
-      const parsedValue = JSON.parse(lastUpdateValue);
-      // eslint-disable-next-line no-console
-      console.log(parsedValue);
-      // eslint-disable-next-line no-console
-      console.log(typeof parsedValue, "Strinfiy");
-      // eslint-disable-next-line no-console
-      console.log(typeof lastUpdateValue);
       this.isLoading = true;
       await fetch(this.element.config.API, {
         method: "post",
@@ -146,8 +139,6 @@ export default {
       })
         .then(response => response.json())
         .then(json => {
-          // eslint-disable-next-line no-console
-          //console.log(json);
           this.options = json.hits.hits.map(product => {
             return {
               id: product._source.productfields.unique_id,
