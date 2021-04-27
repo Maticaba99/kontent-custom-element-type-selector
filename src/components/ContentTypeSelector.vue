@@ -146,6 +146,8 @@ export default {
           }
         }
       };
+      const queryValue = this.element.config.QUERY.replace("##query##", query)
+      console.log(queryValue)
       this.isLoading = true;
       await fetch(this.element.config.API, {
         method: "post",
